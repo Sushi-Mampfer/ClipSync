@@ -1,0 +1,113 @@
+body, html {
+  margin: 0;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+html {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 4rem 0;
+  width: 100%;
+  height: calc(100% - 8rem);
+}
+
+body > p {
+  color: magenta;
+  font-size: 1.5em;
+}
+
+body > textarea {
+  resize: none;
+  background-color: #555;
+  border: 2px purple solid;
+  width: 20rem;
+  height: 10rem;
+  border-radius: 1.5rem;
+  padding: 0;
+  margin: 0;
+  transition: box-shadow .5s ease;
+}
+
+body > textarea:hover {
+  box-shadow: 0 0 2rem 0 magenta;
+}
+
+body > button {
+  background-image: linear-gradient(135deg, magenta 50%, #555 50%);
+  background-position: bottom right;
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  width: 20rem;
+  height: 6rem;
+  padding: 0;
+  margin: 0;
+  border: 2px purple solid;
+  border-radius: 3rem;
+  position: relative;
+  transition: .5s ease;
+}
+
+body > button:hover {
+  background-position: top left;
+  box-shadow: 0 0 2rem 0 magenta;
+  border-color: magenta;
+}
+
+body > button::after {
+  color: #fff;
+  content: "Start";
+  position: absolute;
+  left: .25rem;
+  top: .25rem;
+  height: calc(5.5rem - 4px);
+  width: calc(5.5rem - 4px);
+  background-color: purple;
+  margin: 0;
+  padding: 0;
+  border-radius: 3rem;
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  transition: 1s ease;
+}
+
+body > button.enabled::after {
+  content: "Stop";
+  left: calc(20rem - 5.75rem);
+}
+
+
+.err {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 999999999;
+  height: 100%;
+  width: 100%;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.err > h1 {
+  color: red;
+}
+
+.err > p {
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
