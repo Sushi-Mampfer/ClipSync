@@ -14,7 +14,8 @@ async fn handle_msg(msg: &str) {
         app_handle().emit("con", msg.data).unwrap();
     } else if msg.id == "clip" {
         set_clip(msg.data.clone()).await;
-        app_handle().emit("clip", msg.data).unwrap();
+        app_handle().emit("clip", msg.data.clone()).unwrap();
+        println!("Clip emited: {}", msg.data);
     }
 }
 

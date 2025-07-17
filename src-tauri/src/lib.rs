@@ -10,7 +10,7 @@ use tauri::{async_runtime::{self, Mutex}, AppHandle, Manager};
 
 use crate::{clip::start_clip, ws::start_ws};
 
-const WS_URL: &str = "ws://localhost:3000";
+const WS_URL: &str = "ws://localhost:8000/ws";
 
 static CLIPBOARD: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
 static CURRENT_CLIP: LazyLock<Mutex<String>> = LazyLock::new(|| Mutex::new(String::new()));

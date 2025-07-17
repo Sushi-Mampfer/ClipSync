@@ -24,13 +24,15 @@ body > p {
 }
 
 body > textarea {
+  box-sizing: content-box;
+  color: #fff;
   resize: none;
   background-color: #555;
   border: 2px purple solid;
-  width: 20rem;
-  height: 10rem;
+  padding: 1rem;
+  width: 18em;
+  height: 8rem;
   border-radius: 1.5rem;
-  padding: 0;
   margin: 0;
   transition: box-shadow .5s ease;
 }

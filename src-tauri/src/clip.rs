@@ -38,6 +38,7 @@ pub async fn clip_loop() {
             if changed {
                 send_msg(WsMsg { id: "clip".to_owned(), data: text_2.to_owned() }).await;
                 app_handle().emit("clip", text_2.to_owned()).unwrap();
+                println!("Clip emited: {}", text_2);
             }
         }
     }
@@ -48,6 +49,9 @@ pub async fn set_clip(text: String) {
         return
     }
     let _lock = CLIPBOARD.lock().await;
-    *CURRENT_CLIP.lock().await = text.clone();
-    Clipboard::get().write_text(text).unwrap();
+    let mut current_clip = CURRENT_CLIP.lock().await;
+    if *current_clip != text {
+        *current_clip = text.clone();
+        Clipboard::get().write_text(text).unwrap();
+    }
 }

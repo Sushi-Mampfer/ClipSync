@@ -41,17 +41,19 @@ pub fn App() -> impl IntoView {
 
     view! {
         <p>Current clipboard:</p>
-        <textarea disabled>{clip}</textarea>
-        <p>{if con.get() == "1".to_string() || con.get() == "".to_string() {
+        <textarea id="thx browser" prop:value=move || clip.get() disabled>{clip}</textarea>
+        <p>{move || if con.get() == "1".to_string() || con.get() == "".to_string() {
             "You're currently alone".to_string()
         } else {
             format!("There are {} people connected", con.get())
         }}</p>
         <button class:enabled=move || enabled.get()
-        on:click=move |_| spawn_local(async move {
+        on:click=move |_| {
+            let enabled_value = enabled.get();
+            spawn_local(async move {
             invoke::<()>("toggle", ()).await;
-            *set_enabled.write() = !enabled.get()
-        })/>
+            *set_enabled.write() = !enabled_value;
+        })}/>
         <div class="err" class:hidden=move || err.get() == "".to_string()>
         <h1>
         Error
