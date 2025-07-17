@@ -38,7 +38,6 @@ pub async fn clip_loop() {
             if changed {
                 send_msg(WsMsg { id: "clip".to_owned(), data: text_2.to_owned() }).await;
                 app_handle().emit("clip", text_2.to_owned()).unwrap();
-                println!("Clip emited: {}", text_2);
             }
         }
     }
